@@ -3,7 +3,7 @@
 
 char* Response(int a, int b)
 {
-    char *response = malloc(10);
+    char *response = (char*)malloc(10);
     strcpy(response, "4-5, 2");
     return response;
 }
