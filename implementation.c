@@ -74,6 +74,43 @@ char* Response(int a, int b)
     return response;
 }
 
+bool ArraySorted_test(int input[], int inputsorted[], int n)
+{
+    bool sorted = true;
+    int i;
+    for(i = 0 ; i < n ; i++)
+    {
+       if(input[i] != inputsorted[i])
+       {
+           sorted = false;
+       }
+    }
+    
+    return sorted;
+}
+
+int RangeCount_Test(int input[], int n, int low, int up)
+{
+    int count= 0, i;
+    for(i = 0; i < n ; i++)
+    {
+        if(input[i]>=low && input[i]<= up)
+        {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+char *Rangeformat_Test(int low, int up,int count)
+{
+    char string[20];
+    
+    sprintf(string,"%d-%d, %d",low, up, count);
+    return string;
+}
+
 
 int main()
 {
@@ -86,6 +123,15 @@ int main()
     n = sizeof(input)/sizeof(input[0]);
     sortarray(input, n);
     defineranges(input, n);
+    int Input[10] = {8,15,9,2,7,6,9,1,25,0};
+    int sortedarray[10] = {0,1,2,6,7,8,9,9,15,25};
+    int n = sizeof(Input)/sizeof(Input[0]);
+    sortarray(Input,n);
+    //test the sort array function
+    assert(ArraySorted_test(Input,sortedarray,n) == true );
+    //test the ranges
+    assert(RangeCount_Test(Input,n,6,9) == 5);
+    //assert(strcmp(Rangeformat_Test(6,9),"6-9, 5")= 0)
     
     return 0;
 }
